@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../screens/loginscreen.dart';
+import '../screens/LoginScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'Quiz Lab 4',
       theme: ThemeData(
         primarySwatch: Colors.purple,
-        fontFamily: 'Roboto',
+        fontFamily: 'FamilijenGrostesk'
       ),
-      home: const loginscreen(),
+      home: const LoginScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
