@@ -1,0 +1,35 @@
+name: utslabpemmob_tiara_23_107
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+
+  fonts:
+    - family: Urbanist
+      fonts:
+        - asset: assets/fonts/FamiljenGrotesk.ttf
+          weight: 300
+        - asset: assets/fonts/Inter.ttf
+          weight: 300
+        - asset: assets/fonts/Unbounded.ttf
+          weight: 300
