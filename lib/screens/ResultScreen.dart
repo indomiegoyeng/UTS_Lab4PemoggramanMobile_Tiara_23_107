@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'LoginScreen.dart';
+import '../widgets/background.dart';
+import '../screens/LoginScreen.dart';
 
 class ResultScreen extends StatelessWidget {
   final String name;

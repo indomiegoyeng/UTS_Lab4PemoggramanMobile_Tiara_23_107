@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../models/model.dart';
 import '../widgets/question_card.dart';
+import '../widgets/score_board.dart';
 import '../widgets/answer_button.dart';
-import 'ResultScreen.dart';
+import '../widgets/background.dart';
+import '../screens/ResultScreen.dart';
 
 class QuizScreen extends StatefulWidget {
   final String name;
@@ -75,92 +77,100 @@ class _QuizScreenState extends State<QuizScreen> {
     final currentQuestion = _questions[_currentQuestionIndex];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
-      body: SafeArea(
-        child: Center(
-          child: Container(
-            constraints: BoxConstraints(
-              maxWidth: isTablet ? 600 : double.infinity,
-            ),
-            child: Column(
-              children: [
-                // Question Content
-                Expanded(
-                  child: SingleChildScrollView(
-                    padding: EdgeInsets.all(screenWidth * 0.05),
-                    child: Column(
-                      children: [
-                        // Question Card
-                        QuestionCard(
-                          questionNumber: _currentQuestionIndex + 1,
-                          questionText: currentQuestion.questionText,
-                        ),
-                        SizedBox(height: screenHeight * 0.03),
+      body: Background(
+        child: SafeArea(
+          child: Center(
+            child: Container(
+              constraints: BoxConstraints(
+                maxWidth: isTablet ? 600 : double.infinity,
+              ),
+              child: Column(
+                children: [
+                  // Score Board
+                  ScoreBoard(
+                    score: _score,
+                    currentQuestion: _currentQuestionIndex + 1,
+                    totalQuestions: _questions.length,
+                  ),
 
-                        // Answer Options
-                        ...List.generate(
-                          currentQuestion.options.length,
-                              (index) => Padding(
-                            padding: EdgeInsets.only(bottom: screenHeight * 0.015),
-                            child: _buildAnswerOption(
-                              context,
-                              currentQuestion.options[index],
-                              index,
-                              currentQuestion.correctAnswerIndex,
+                  // Question Content
+                  Expanded(
+                    child: SingleChildScrollView(
+                      padding: EdgeInsets.all(screenWidth * 0.05),
+                      child: Column(
+                        children: [
+                          // Question Card
+                          QuestionCard(
+                            questionNumber: _currentQuestionIndex + 1,
+                            questionText: currentQuestion.questionText,
+                          ),
+                          SizedBox(height: screenHeight * 0.03),
+
+                          // Answer Options
+                          ...List.generate(
+                            currentQuestion.options.length,
+                                (index) => Padding(
+                              padding: EdgeInsets.only(bottom: screenHeight * 0.015),
+                              child: _buildAnswerOption(
+                                context,
+                                currentQuestion.options[index],
+                                index,
+                                currentQuestion.correctAnswerIndex,
+                              ),
                             ),
                           ),
-                        ),
 
-                        SizedBox(height: screenHeight * 0.03),
+                          SizedBox(height: screenHeight * 0.03),
 
-                        // Answer Button
-                        if (!_hasAnswered && _selectedAnswerIndex != null)
-                          AnswerButton(
-                            onPressed: _submitAnswer,
-                            isTablet: isTablet,
-                          ),
+                          // Answer Button
+                          if (!_hasAnswered && _selectedAnswerIndex != null)
+                            AnswerButton(
+                              onPressed: _submitAnswer,
+                              isTablet: isTablet,
+                            ),
 
-                        // Next Button
-                        if (_hasAnswered)
-                          SizedBox(
-                            width: double.infinity,
-                            height: isTablet ? 60 : screenHeight * 0.065,
-                            child: ElevatedButton(
-                              onPressed: _nextQuestion,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF3498DB),
-                                foregroundColor: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
+                          // Next Button
+                          if (_hasAnswered)
+                            SizedBox(
+                              width: double.infinity,
+                              height: isTablet ? 60 : screenHeight * 0.065,
+                              child: ElevatedButton(
+                                onPressed: _nextQuestion,
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFF3498DB),
+                                  foregroundColor: Colors.white,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                  elevation: 3,
                                 ),
-                                elevation: 3,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    _currentQuestionIndex < _questions.length - 1
-                                        ? 'Lanjut'
-                                        : 'Lihat Hasil',
-                                    style: TextStyle(
-                                      fontSize: isTablet ? 20 : screenWidth * 0.045,
-                                      fontWeight: FontWeight.bold,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      _currentQuestionIndex < _questions.length - 1
+                                          ? 'Lanjut'
+                                          : 'Lihat Hasil',
+                                      style: TextStyle(
+                                        fontSize: isTablet ? 20 : screenWidth * 0.045,
+                                        fontWeight: FontWeight.bold,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(width: screenWidth * 0.02),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    size: isTablet ? 24 : screenWidth * 0.05,
-                                  ),
-                                ],
+                                    SizedBox(width: screenWidth * 0.02),
+                                    Icon(
+                                      Icons.arrow_forward,
+                                      size: isTablet ? 24 : screenWidth * 0.05,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -175,13 +185,14 @@ class _QuizScreenState extends State<QuizScreen> {
       int correctIndex,
       ) {
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     final isTablet = screenWidth > 600;
     final isSelected = _selectedAnswerIndex == index;
     final isCorrect = index == correctIndex;
 
     Color backgroundColor;
     Color borderColor;
-    Color textColor = const Color(0xFF2C3E50);
+    Color textColor = Colors.black;
     Widget? trailingIcon;
 
     if (_hasAnswered) {
@@ -200,15 +211,16 @@ class _QuizScreenState extends State<QuizScreen> {
         textColor = Colors.white;
       } else {
         backgroundColor = Colors.white;
-        borderColor = const Color(0xFFE0E0E0);
+        borderColor = Colors.grey.shade300;
       }
     } else {
       if (isSelected) {
-        backgroundColor = const Color(0xFFEBF5FB);
-        borderColor = const Color(0xFF3498DB);
+        backgroundColor = const Color(0xFF3498DB);
+        borderColor = const Color(0xFF2980B9);
+        textColor = Colors.white;
       } else {
         backgroundColor = Colors.white;
-        borderColor = const Color(0xFFE0E0E0);
+        borderColor = Colors.grey.shade300;
       }
     }
 
@@ -217,14 +229,17 @@ class _QuizScreenState extends State<QuizScreen> {
       borderRadius: BorderRadius.circular(12),
       child: Container(
         width: double.infinity,
-        padding: EdgeInsets.all(screenWidth * 0.04),
+        padding: EdgeInsets.symmetric(
+          horizontal: screenWidth * 0.04,
+          vertical: screenHeight * 0.02,
+        ),
         decoration: BoxDecoration(
           color: backgroundColor,
           border: Border.all(color: borderColor, width: 2),
           borderRadius: BorderRadius.circular(12),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withOpacity(0.08),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),
@@ -236,9 +251,9 @@ class _QuizScreenState extends State<QuizScreen> {
               child: Text(
                 optionText,
                 style: TextStyle(
-                  fontSize: isTablet ? 18 : screenWidth * 0.04,
+                  fontSize: isTablet ? 16 : screenWidth * 0.04,
                   color: textColor,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
+                  fontWeight: FontWeight.w500,
                 ),
               ),
             ),

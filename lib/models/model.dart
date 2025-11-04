@@ -13,54 +13,54 @@ class Question {
 List<Question> getQuizQuestions() {
   return [
     Question(
-      questionText: 'Apa kepanjangan dari Flutter?',
+      questionText: 'Dalam arsitektur Android, komponen yang bertanggung jawab untuk mengelola logika bisnis dan interaksi pengguna disebut:',
       options: [
-        'Fast Language UI Tool',
-        'Framework untuk membuat UI',
-        'Flutter adalah nama, bukan akronim',
-        'Flexible User Interface'
+        'Service',
+        'Activity',
+        'Broadcast Receiver',
+        'Content Provider'
       ],
-      correctAnswerIndex: 2,
+      correctAnswerIndex: 1, // Activity
     ),
     Question(
-      questionText: 'Widget apa yang digunakan untuk membuat tampilan yang tidak berubah?',
+      questionText: 'Framework berikut yang digunakan untuk membuat aplikasi cross-platform (Android dan iOS sekaligus) adalah:',
       options: [
-        'StatefulWidget',
-        'StatelessWidget',
-        'DynamicWidget',
-        'ChangeWidget'
+        'Android Studio',
+        'Xcode',
+        'Flutter',
+        'Kotlin'
       ],
-      correctAnswerIndex: 1,
+      correctAnswerIndex: 2, // Flutter
     ),
     Question(
-      questionText: 'Bahasa pemrograman apa yang digunakan Flutter?',
+      questionText: 'Komponen Android yang digunakan untuk menjalankan proses di latar belakang tanpa antarmuka pengguna disebut:',
       options: [
-        'Java',
-        'Kotlin',
-        'Dart',
-        'Swift'
+        'Fragment',
+        'Activity',
+        'Service',
+        'Intent'
       ],
-      correctAnswerIndex: 2,
+      correctAnswerIndex: 2, // Service
     ),
     Question(
-      questionText: 'Method apa yang dipanggil pertama kali saat StatefulWidget dibuat?',
+      questionText: 'Dalam Flutter, widget yang digunakan untuk menampilkan teks di layar adalah:',
       options: [
-        'build()',
-        'initState()',
-        'dispose()',
-        'setState()'
+        'Image',
+        'Text',
+        'Label',
+        'StringView'
       ],
-      correctAnswerIndex: 1,
+      correctAnswerIndex: 1, // Text
     ),
     Question(
-      questionText: 'Widget apa yang digunakan untuk membuat daftar scrollable di Flutter?',
+      questionText: 'Dalam konteks mobile development, Firebase digunakan untuk:',
       options: [
-        'Container',
-        'Column',
-        'ListView',
-        'Stack'
+        'Mendesain tampilan antarmuka aplikasi',
+        'Mengelola database, autentikasi, dan analitik aplikasi',
+        'Mengedit file layout',
+        'Membuat animasi UI'
       ],
-      correctAnswerIndex: 2,
+      correctAnswerIndex: 1, // Mengelola database, autentikasi, dan analitik aplikasi
     ),
   ];
 }

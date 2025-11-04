@@ -21,29 +21,20 @@ class AnswerButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFF9B59B6),
+          backgroundColor: Colors.black,
           foregroundColor: Colors.white,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
           elevation: 3,
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.check_circle_outline,
-              size: isTablet ? 24 : screenWidth * 0.05,
-            ),
-            SizedBox(width: screenWidth * 0.02),
-            Text(
-              'Jawab',
-              style: TextStyle(
-                fontSize: isTablet ? 20 : screenWidth * 0.045,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
+        child: Text(
+          'Answer',
+          style: TextStyle(
+            fontSize: isTablet ? 20 : screenWidth * 0.045,
+            fontWeight: FontWeight.bold,
+            letterSpacing: 0.5,
+          ),
         ),
       ),
     );
