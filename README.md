@@ -1,20 +1,23 @@
-<<<<<<< HEAD
-# utslab4pemmob_tiara_23_107
+Nama: Tiara Bella Dwiyanti Sitepu
+NIM: 231401107
+Nama Aplikasi: Quiz4Mobile
 
-UTS
+Deskripsi:
+Quiz4Mobile adalah aplikasi edukatif yang dirancang untuk membantu
+pengguna mengasah pengetahuan mereka seputar pemrograman mobile dengan
+cara yang menyenangkan dan interaktif. Aplikasi ini memiliki tampilan
+yang sederhana dan ramah pengguna, sehingga cocok digunakan oleh mahasiswa,
+pelajar, maupun siapa pun yang ingin belajar pemrograman mobile dengan cara
+yang praktis. Setiap sesi kuis akan menampilkan skor akhir untuk memotivasi
+pengguna dalam meningkatkan kemampuan mereka dari waktu ke waktu.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
+Credit:
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# UTS_Lab4PemoggramanMobile_Tiara_23_107
->>>>>>> e955f5961072cf28d7f0f19a9afc1ee733a72724
+Screenrecord:
+https://drive.google.com/drive/folders/1NS0dDfy84cegGgGBx5XcntfuvYtR25Z2?usp=sharing
+
+link prototype:
+https://www.figma.com/design/L3ME6mMY4QiNFVTVnA5CiK/UTS-LAB-Pemmob-Tiara?node-id=0-1&t=YsfJ7S1UtHF0O8VW-1
+
