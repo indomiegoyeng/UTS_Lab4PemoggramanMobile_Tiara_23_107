@@ -42,194 +42,195 @@ class ResultScreen extends StatelessWidget {
     }
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF5F7FA),
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Container(
-              constraints: BoxConstraints(
-                maxWidth: isTablet ? 500 : screenWidth * 0.9,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: screenWidth * 0.05,
-                vertical: screenHeight * 0.02,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Result Icon
-                  Container(
-                    padding: EdgeInsets.all(screenWidth * 0.08),
-                    decoration: BoxDecoration(
-                      color: resultColor.withOpacity(0.1),
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      resultIcon,
-                      size: isTablet ? 100 : screenWidth * 0.25,
-                      color: resultColor,
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.03),
-
-                  // Result Message
-                  Text(
-                    resultMessage,
-                    style: TextStyle(
-                      fontSize: isTablet ? 36 : screenWidth * 0.08,
-                      fontWeight: FontWeight.bold,
-                      color: const Color(0xFF2C3E50),
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: screenHeight * 0.02),
-
-                  // User Info Card
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(screenWidth * 0.05),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.05),
-                          blurRadius: 10,
-                          offset: const Offset(0, 4),
-                        ),
-                      ],
-                    ),
-                    child: Column(
-                      children: [
-                        _buildInfoRow(
-                          Icons.person,
-                          'Nama',
-                          name,
-                          screenWidth,
-                          isTablet,
-                        ),
-                        SizedBox(height: screenHeight * 0.015),
-                        _buildInfoRow(
-                          Icons.badge,
-                          'NIM',
-                          nim,
-                          screenWidth,
-                          isTablet,
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.03),
-
-                  // Score Card
-                  Container(
-                    width: double.infinity,
-                    padding: EdgeInsets.all(screenWidth * 0.06),
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          const Color(0xFF3498DB),
-                          const Color(0xFF2980B9),
+      body: Background(
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: isTablet ? 500 : screenWidth * 0.9,
+                ),
+                padding: EdgeInsets.symmetric(
+                  horizontal: screenWidth * 0.05,
+                  vertical: screenHeight * 0.02,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // Result Icon
+                    Container(
+                      padding: EdgeInsets.all(screenWidth * 0.08),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.9),
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 20,
+                            offset: const Offset(0, 5),
+                          ),
                         ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
                       ),
-                      borderRadius: BorderRadius.circular(16),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color(0xFF3498DB).withOpacity(0.3),
-                          blurRadius: 15,
-                          offset: const Offset(0, 5),
-                        ),
-                      ],
+                      child: Icon(
+                        resultIcon,
+                        size: isTablet ? 100 : screenWidth * 0.25,
+                        color: resultColor,
+                      ),
                     ),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Skor Akhir',
-                          style: TextStyle(
-                            fontSize: isTablet ? 20 : screenWidth * 0.045,
-                            color: Colors.white.withOpacity(0.9),
-                            fontWeight: FontWeight.w500,
+                    SizedBox(height: screenHeight * 0.03),
+
+                    // Result Message
+                    Text(
+                      resultMessage,
+                      style: TextStyle(
+                        fontSize: isTablet ? 36 : screenWidth * 0.08,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(height: screenHeight * 0.02),
+
+                    // User Info Card
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(screenWidth * 0.05),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 10,
+                            offset: const Offset(0, 4),
                           ),
-                        ),
-                        SizedBox(height: screenHeight * 0.01),
-                        Text(
-                          '$score',
-                          style: TextStyle(
-                            fontSize: isTablet ? 72 : screenWidth * 0.18,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          _buildInfoRow(
+                            Icons.person,
+                            'Nama',
+                            name,
+                            screenWidth,
+                            isTablet,
                           ),
-                        ),
-                        SizedBox(height: screenHeight * 0.01),
-                        Text(
-                          'dari ${totalQuestions * 20} poin',
-                          style: TextStyle(
-                            fontSize: isTablet ? 18 : screenWidth * 0.04,
-                            color: Colors.white.withOpacity(0.9),
+                          SizedBox(height: screenHeight * 0.015),
+                          _buildInfoRow(
+                            Icons.badge,
+                            'NIM',
+                            nim,
+                            screenWidth,
+                            isTablet,
                           ),
-                        ),
-                        SizedBox(height: screenHeight * 0.02),
-                        Container(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: screenWidth * 0.04,
-                            vertical: screenHeight * 0.01,
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.03),
+
+                    // Score Card
+                    Container(
+                      width: double.infinity,
+                      padding: EdgeInsets.all(screenWidth * 0.06),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.1),
+                            blurRadius: 15,
+                            offset: const Offset(0, 5),
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.2),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Text(
-                            '$percentage%',
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          Text(
+                            'Skor Akhir',
                             style: TextStyle(
-                              fontSize: isTablet ? 24 : screenWidth * 0.05,
-                              color: Colors.white,
+                              fontSize: isTablet ? 20 : screenWidth * 0.045,
+                              color: const Color(0xFF7F8C8D),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                          SizedBox(height: screenHeight * 0.01),
+                          Text(
+                            '$score',
+                            style: TextStyle(
+                              fontSize: isTablet ? 72 : screenWidth * 0.18,
+                              color: resultColor,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.04),
-
-                  // Retry Button
-                  SizedBox(
-                    width: double.infinity,
-                    height: isTablet ? 60 : screenHeight * 0.065,
-                    child: ElevatedButton.icon(
-                      onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const LoginScreen(),
+                          SizedBox(height: screenHeight * 0.01),
+                          Text(
+                            'dari ${totalQuestions * 20} poin',
+                            style: TextStyle(
+                              fontSize: isTablet ? 18 : screenWidth * 0.04,
+                              color: const Color(0xFF7F8C8D),
+                            ),
                           ),
-                              (route) => false,
-                        );
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF2ECC71),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
+                          SizedBox(height: screenHeight * 0.02),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: screenWidth * 0.04,
+                              vertical: screenHeight * 0.01,
+                            ),
+                            decoration: BoxDecoration(
+                              color: resultColor.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              '$percentage%',
+                              style: TextStyle(
+                                fontSize: isTablet ? 24 : screenWidth * 0.05,
+                                color: resultColor,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: screenHeight * 0.04),
+
+                    // Retry Button
+                    SizedBox(
+                      width: double.infinity,
+                      height: isTablet ? 60 : screenHeight * 0.065,
+                      child: ElevatedButton.icon(
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const LoginScreen(),
+                            ),
+                                (route) => false,
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF000000),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          elevation: 3,
                         ),
-                        elevation: 3,
-                      ),
-                      icon: Icon(
-                        Icons.refresh,
-                        size: isTablet ? 24 : screenWidth * 0.05,
-                      ),
-                      label: Text(
-                        'Ulangi',
-                        style: TextStyle(
-                          fontSize: isTablet ? 20 : screenWidth * 0.045,
-                          fontWeight: FontWeight.bold,
+                        icon: Icon(
+                          Icons.refresh,
+                          size: isTablet ? 24 : screenWidth * 0.05,
+                        ),
+                        label: Text(
+                          'Ulangi',
+                          style: TextStyle(
+                            fontSize: isTablet ? 20 : screenWidth * 0.045,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
